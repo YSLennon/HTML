@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* caption-side: bottom; */
+           /* border-width: 10px;
+           border-style: solid;
+           border-color: red; */
+           border: 1px solid black;
+           border-collapse:collapse;
+           text-align: center;
+
+        }
+        td, th{
+            padding: 10px 20px;
+            border: 1px solid black;
+            /* padding: 0px 10px 20px 30px; */
+        }
+        .background{
+            background-color: #abcdef;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>시험 성적</caption>
+        <col class="background"></col>
+        
+        <tr class="background">
+            <th>이름</th>
+            <th>자바</th>
+            <th>오라클</th>
+            <th>HTML</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>30</td>
+            <td>50</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>80</td>
+            <td>80</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>박영희</td>
+            <td>90</td>
+            <td>90</td>
+            <td>85</td>
+        </tr>
+    </table>
+    
+    <table>
+        <caption>유노 윤호</caption>
+        <tr>
+            <th><marquee scrollamount="180"><mark>댄</mark></marquee></th>
+            <td>자바</td>
+            <td>오라클</td>
+            <th><marquee scrollamount="180"><mark>싱</mark></marquee></th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>30</td>
+            <td>50</td>
+            <td>홍길동</td>
+        </tr>
+        <tr>
+            <td>김철수</td>
+            <td>80</td>
+            <td>80</td>
+            <td>김철수</td>
+        </tr>
+        <tr>
+            <th><marquee scrollamount="180"><mark>머</mark></marquee></th>
+            <td>90</td>
+            <td>90</td>
+            <th><marquee scrollamount="180"><mark>신</mark></marquee></th>
+        </tr>
+        <tr>
+            <td colspan="4"><marquee scrollamount="1"><mark>Marquee 또 너야!?</mark></marquee></td> 
+        </tr>
+    </table>
+</body>
+</html>

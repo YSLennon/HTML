@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{border: 1px solid black;
+            border-top: 10px dotted rgb(224, 161, 83);
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            /* height == lineheight --> text 위아래 정렬이 가능하다 */
+            line-height: 100px;
+            /* 영역 차지의 개념에선 inline의 개념을 가진다 */
+            /* display: inline-block; */
+            text-align: center;
+            overflow: hidden;
+            
+        }
+        .box2{
+            padding: 50px;
+            
+            background-color:  rgb(224, 161, 83);
+            ;
+        
+        }
+        .box3{
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="height: 60px; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+        <img src="src/hey.png" style="width: 100%; height: auto;">
+        
+    </div>
+    <div class="box box2">
+        box
+    </div>
+    <div class="box box3">
+        box
+    </div>
+</body>
+</html>
