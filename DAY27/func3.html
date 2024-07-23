@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div>
+        <input placeholder="color" id="inputColor">
+        <button onclick="changeTagColor(inputColor)">TagName</button>
+        <button onclick="changeClassBackgroundColor(inputColor)">ClassName</button>
+        <button onclick="colorQuery1()">Query1</button>
+        <button onclick="colorQuery2()">Query2</button>
+    </div>
+    <p class="back-yellow">과목 목록</p>
+    <ul>
+        <li >자바</li>
+        <li>오라클</li>
+        <li class="back-yellow">html</li>
+        <li>css</li>
+        <li>javascript</li>
+    </ul>
+</body>
+</html>
+<script>
+    function changeTagColor(color){
+        var list = document.getElementsByTagName("li");
+        // [] .item() 모두 동일함!
+        console.log(list.item(0));
+        console.log(list[0]);
+        for(var i =0 ; i < list.length ; i++){
+            list[i].style.color = color.value;
+        }
+    }
+    function changeClassBackgroundColor(color){
+        var list = document.getElementsByClassName("back-yellow")
+        for(var i =0 ; i < list.length ; i++){
+            list[i].style.backgroundColor = color.value;
+        }
+    }
+    function colorQuery1(){
+        var list = document.querySelector("p")
+        list.style.color = "blue";
+
+        // for(var i =0 ; i < list.length ; i++){
+        //     list[i].style.color = "blue";
+        // }
+    }
+    function colorQuery2(){
+        var list = document.querySelectorAll("li")
+        // list.style.color = "blue";
+        console.log(list);
+
+        for(var i =0 ; i < list.length ; i++){
+            list[i].style.color = "blue";
+        }
+    }
+</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="str">
+    <button onclick="alertTxt(str, lb)">Click!</button>
+    <label id="lb"></label>
+</body>
+</html>
+<script>
+    function alertTxt(str, lb){
+        lb.innerText = str.value;
+        var item = document.querySelector("input");
+        alert(item.value);
+        alert(str.value);
+    }
+</script>

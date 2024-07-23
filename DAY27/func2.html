@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <input placeholder="색 코드 입력" id = color>
+            <a href="javascript:;" onclick="changeColor(color)" id="txt">색 바꾸기</a>
+            <a href="javascript:;" onclick="changeColor2(color)" id="txt2">색 바꾸기</a>
+        </fieldset>
+    </form>
+</body>
+</html>
+<script>
+    function changeColor(choice){
+        var txt = document.getElementById("txt");
+        txt.style.color = choice.value;
+        // if(txt.style.color == "blue"){
+        //     txt.style.color = "red";
+        // } else{
+        //     txt.style.color = "blue";
+        // }
+
+    }
+    function changeColor2(){
+        var txt = document.querySelector("#txt2");
+        if(txt.style.color == "blue"){
+            txt.style.color = "red";
+        } else{
+            txt.style.color = "blue";
+        }
+
+    }
+</script>

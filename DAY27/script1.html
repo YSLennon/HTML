@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input id="inp">
+    <button onclick="alpha()">Button</button>
+    <label id="lb">hi</label>
+</body>
+</html>
+
+<script>
+    // alert("환영합니다!");
+
+    // var, let, const(상수)을 쓸 수 있다. let을 많이 쓴다함
+    // 따로 타입의 지정이 필요 없다.
+    // var flg = confirm("삭제하시겠습니까?")
+    // var flg = confirm("삭제하시겠습니까?");
+    // if(flg){
+    //     document.write("<h1>삭제되었다!</h1>");
+        
+    // }else{
+    //     document.write("취소되었다!")
+    // }
+    
+    // js에서는 데이터 타입의 경계가 흐릿함. 숫자, 문자 1은 동일하게 처리됨
+    var num1 = 1;
+    var num2 = "1";
+    // 타입까지 비교함
+    if (num1 === num2){
+        alert("타입 비교까지 되었다!")
+    // 값 자체만 비교함
+    } else if(num1==num2){
+        alert("num1==num2");
+    }
+
+    function alpha(){
+        var lb = document.getElementById('lb');
+        var inp = document.getElementById('inp').value;
+        lb.innerText = inp;   
+    }
+    
+    
+</script>

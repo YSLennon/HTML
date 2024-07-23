@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="destination" placeholder="location">
+    <button onclick="moveTo(destination)">페이지 이동</button>
+    <button onclick="popup()">팝업</button>
+    <button onclick="pageClose()">페이지 닫기</button>
+</body>
+</html>
+<script>
+    function moveTo(destination){
+        location.href = destination.value;
+    }
+    function pageClose(){
+        close();
+    }
+    function popup(){
+        // name 부분이 있으면 중복으로 열지않고 해당 팝업으로 이동한다
+        var availWidth = screen.availWidth/2-250;
+        var availHeight = screen.availHeight/2-250;
+
+        window.open("popup.html", "Name", `width =500, height = 500, left =${availWidth}, top= ${availHeight}`);
+    }
+</script>

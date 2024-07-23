@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="src/cat.jpeg" id="img1" >
+</body>
+</html>
+<script>
+    var obj = document.querySelector("#img1");
+    // obj.onclick = test 
+    // function test(){
+    //     alert("고양이는 다다익선!");
+    //     obj.src = "src/cats.jpg";
+    // }
+
+    obj.onclick = function(e){
+        // alert("고양이는 다다익선!");
+        // obj.src = "src/cats.jpg";
+        // console.log("event 객체: ", e);
+        // console.log("event 위치: ", e.x);
+        // console.log("event 위치: ", e.pageX);
+        // console.log("event 유형: ", e.type);
+    }
+
+    // obj.addEventListener("mouseover", function(){
+    //     alert("마우스 치아라!")
+    // })
+    A
+    obj.addEventListener("mouseover",() => {obj.src = "src/cats.jpg"})
+    obj.addEventListener("mouseout",() => {obj.src = "src/cat.jpeg"})
+</script>
