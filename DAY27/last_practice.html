@@ -6,35 +6,53 @@
     <title>Document</title>
     <style>
         #container{
-            width: 1500px;
+            width: 500px;
             padding: 0px;
-            
+            margin: 0 auto;
+
+        }
+        fieldset{
+            width: 100%;
+            border: 1px solid #ccc;
         }
         .left{
             box-sizing: border-box;
-            width: 150px;
-            margin-left: 20px;
+            width: 35%;
+            height: 100px;
+            line-height: 40px;
             display: inline-block;
         }
         .right{
             box-sizing: border-box;
-            width: 1000px;
-            margin: 20px;
+            width: 60%;
+            height: 100px;
+            line-height: 40px;
+            margin-bottom: 50px;
             display: inline-block;
+            
         }
         ul, li{
-            padding: 10px;
+            /* padding: 10px; */
             list-style: none;
         }
         input{
-            border: 2px solid black;
+            width: 200px;
+            height: 20px;
+            border: 2px solid red;
             border-radius: 5px;
+        }
+        #submitBtn{
+            width: 70px;
+            height: 30px;
+            display: block;
+            border-radius: 30px;
+            margin: 20px auto;
         }
     </style>
 </head>
 <body>
     <form id="container">
-        <fieldset >
+        <fieldset>
             <legend><h3>로그인 정보</h3></legend>
             <div class="left">
                 <ul>
@@ -48,8 +66,8 @@
             <div class="right">
                 <ul>
                     <li><input id="id"></li>
-                    <li><input id="pw"></li>
-                    <li><input id="pwCheck"></li>
+                    <li><input id="password"></li>
+                    <li><input id="confirm_password"></li>
                     <li>준회원</li>
                 </ul>
 
@@ -75,13 +93,26 @@
 
             </div>
         </fieldset>
-        <button onclick="checkSubmit()">제출</button>
-        <!-- <p><button onclick="checkEmptyS(name)">제출</button></p> -->
+        <button id="submitBtn" onclick="checkSubmit()">제출</button>
     </form>
 </body>
 </html>
 
 <script>
+    var inputs = document.querySelectorAll(`nput[type = "text"]`);
+    inputs.forEach(input =>{
+        input.addEventListener("focus", e =>{
+            e.target.style.borderColor = "black";
+        })
+        // 어떻게 구현하지? 포커스가 안가도 값이 입력되면 얇은 bk border로 바꾸고싶은디..
+        // input.addEventListener("blur",e =>{
+        //     console.log(e.target.value);
+        //     if(e.target.value == ""){
+        //         e.target.style.border = "1px solid black"    
+        //     }
+        // })
+    })
+
     function checkSubmit(){
         if(!checkEmpty()){
             return;
@@ -95,48 +126,37 @@
         alert("가입되었습니다!")
     }
     function checkEmpty(){
-        var id = document.querySelector("#id").value;
-        if(id ==""){
-            alert("아이디를 입력해주세요");
-            return;
-        }
-        var pw = document.querySelector("#pw").value;
-        if(pw ==""){
-            alert("비밀번호를 입력해주세요!");
-            return;
-        }
-        var pwCheck = document.querySelector("#pwCheck").value;
-        if(pwCheck ==""){
-            alert("비밀번호 확인를 입력해주세요!");
-            return;
-        }
-        var name = document.querySelector("#name").value;
-        if(name ==""){
-            alert("이름을 입력해주세요!");
-            return;
+        var list = ["id", "password", "confirm_password", "name"];
+
+        for(var i =0 ; i<list.length ; i++){
+            if(!confirmStrID(list[i])) return false;
         }
         return true;
-
-
+    }
+    function confirmStrID(str){
+        if(document.querySelector(`#${str}`).value == ""){
+            alert(`please enter your '${str}'`);
+            return false;
+        } else return true;
+        
     }
     function checkPWLength(){
-        var pw = document.querySelector("#pw").value;
+        var pw = document.querySelector("#password").value;
         if(pw.length <6){
-            alert("비밀번호는 6자리 이상입니다!!");
-            return;
+            alert("please enter password at leat '6 characters'");
+            return false;
         }
         return true;
-
 
     }
     function checkSamePW(){
-        var pw = document.querySelector("#pw").value;
-        var pwCheck = document.querySelector("#pwCheck").value;
+        var pw = document.querySelector("#password").value;
+        var pwCheck = document.querySelector("#confirm_password").value;
         if(pw == pwCheck){
 
         } else{
-            alert("서로 같은 비밀번호를 입력해주세요!")
-            return;
+            alert("password doesn't match!")
+            return false;
         }
         return true;
 
