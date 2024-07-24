@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 500px;
+            padding: 0px;
+            margin: 0 auto;
+
+        }
+        fieldset{
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+        .left{
+            box-sizing: border-box;
+            width: 35%;
+            height: 100px;
+            line-height: 40px;
+            display: inline-block;
+        }
+        .right{
+            box-sizing: border-box;
+            width: 60%;
+            height: 100px;
+            line-height: 40px;
+            margin-bottom: 50px;
+            display: inline-block;
+            
+        }
+        ul, li{
+            /* padding: 10px; */
+            list-style: none;
+        }
+        input{
+            width: 200px;
+            height: 20px;
+            border: 2px solid red;
+            border-radius: 5px;
+        }
+        #submitBtn{
+            width: 70px;
+            height: 30px;
+            display: block;
+            border-radius: 30px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <input id="phone"  type="text" placeholder="핸드폰 번호(숫자만)" >
+    
+    <button id="submitBtn" onclick="fnJoin()">가입</button>
+    
+</body>
+</html>
+
+<script>
+
+    function fnJoin(){
+        var phone = document.querySelector("#phone").value;
+        // 숫자만 체크
+        var regex = /^[0-9]*$/;
+        if(!regex.test(phone)){
+            alert("문자 쓰지마잇!")
+            return;
+        } else alert("숫자 좋아용~");
+        
+
+    }
+
+
+</script>

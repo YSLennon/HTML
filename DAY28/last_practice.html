@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        @keyframes flipCard{
+            from{
+                transform: rotateY(0deg);
+                background-image: url("../ForMyPractice/src/pikachu.webp");
+
+            }
+            to{
+                transform: rotateY(180deg);
+                background-image: url("../ForMyPractice/src/pocketmon_back.webp");
+            }
+        
+        }
+        @keyframes flipCard2{
+            from{
+                transform: rotateY(0deg);
+                background-image: url("../ForMyPractice/src/pocketmon_back.webp");
+
+            }
+            to{
+                transform: rotateY(180deg);
+                background-image: url("../ForMyPractice/src/pikachu.webp");
+            }
+        
+        }
+        .card{
+            width: 120px;
+            height: 168px;
+            box-shadow: 3px 3px 3px black;
+            background-image: url('../ForMyPractice/src/pikachu.webp');
+            background-size: 100%;
+            /* transform: rotateY(180deg);
+            transition: 2s; */
+        }
+        
+        .cardBack{
+            width: 120px;
+            height: 168px;
+            box-shadow: 3px 3px 3px black;
+            background-image: url('../ForMyPractice/src/pocketmon_back.webp');
+            background-size: 100%;
+            /* transform: rotateY(-180deg);
+            transition: 2s; */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="card"></div>
+</body>
+</html>
+<script>
+    var card = document.querySelector(".card");
+    card.addEventListener("mousedown", () =>{
+     card.style = "transform: rotateY(180deg);transition: 2s ease;background-image: url('../ForMyPractice/src/pocketmon_back.webp');";   
+    
+    // card.classList.remove("card");
+    // card.classList.add("cardBack");
+    
+            
+    })
+    card.addEventListener("mouseup", () =>{
+     card.style = "transform: rotateY(0deg);transition: 2s ease;background-image: url('../ForMyPractice/src/pikachu.webp');";   
+     
+    // card.classList.remove("cardBack");
+    // card.classList.add("card");
+    
+    })
+</script>

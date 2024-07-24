@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="time"></div>
+</body>
+</html>
+<script>
+    // var time = new Date();
+    // var obj = document.querySelector("#time");
+    // obj.innerHTML = time.toLocaleString();
+    // console.log(time.getFullYear());
+    // // getMonth()는 0부터 11이 나온다
+    // console.log(time.getMonth()+1);
+    // console.log(time.getDate());
+    // // 0 -6 사이, 일 - 토 의미함
+    // console.log(time.getDay());
+
+    // 특정 시간마다 함수 돌리기
+    setInterval(()=>{
+        var time = new Date();
+        var obj = document.querySelector("#time");
+        obj.innerHTML = time.toLocaleString();
+    },1000);
+    setTimeout(timeoutAlert, 5000);
+
+    function timeoutAlert(){
+        alert("아빠 안잔다.");
+    }
+
+
+
+
+</script>

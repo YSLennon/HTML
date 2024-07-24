@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input id="numb1" type="text"> 행 <input id="numb2" type="text"> 열 
+    <button onclick="makeTable()" >작성</button>
+    <div id="main">
+        <table>
+            
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    function shortCut(){
+        var main = document.querySelector("#main");
+        main.innerHTML ="<table>tr*4>td*3</table>"
+    }
+    function makeTable(){
+
+        var numb1 = parseInt(document.querySelector("#numb1").value);
+        var numb2 = parseInt(document.querySelector("#numb2").value);
+
+        var main = document.querySelector("#main");
+        var table = document.createElement("table");
+        for(var i =0 ; i<numb1+1 ; i++){
+            var tr = document.createElement("tr");
+            if(i ==0){
+                tr.style.backgroundColor = "#abcdef";
+            }
+            table.appendChild(tr);
+            for(var j = 0 ; j<numb2+1 ; j++){
+                var td = document.createElement("td");
+                var attr2 = document.createAttribute("style");
+                attr2.value = "border : 1px solid black; padding : 10px 20px ; text-align: center;"
+                if (i ==0 && j == 0){
+                } else if(i ==0){  
+                    td.innerHTML = `Column:${j+1}`;
+                } else if(j == 0 && i ){
+                    td.innerHTML = `Row:${i+1}`;
+                    attr2.value = "border : 1px solid black; padding : 10px 20px ; text-align: center; background-color : #abcdef;"
+                }
+                 else{
+                    td.innerHTML = `${i},${j}`;
+                }
+                td.setAttributeNode(attr2);
+                tr.appendChild(td);
+            }
+        }
+        var attr = document.createAttribute("style");
+        attr.value = "border : 1px solid black ; border-collapse: collapse; margin: 20px"
+
+        table.setAttributeNode(attr);
+        main.appendChild(table);
+        
+    }
+</script>

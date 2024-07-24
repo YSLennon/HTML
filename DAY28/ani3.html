@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>        
+        @keyframes ani1{
+            from{
+                
+            }
+            to{
+
+            }
+        }
+        @keyframes ani2{
+            0%{
+                transform: rotate(0deg);       
+            }
+            50%{
+                transform: rotate(180deg);       
+            }
+            100%{
+                transform: rotate(360deg);       
+            }
+        }
+        .box{            
+            width: 150px;
+            height: 150px;
+            border: 1px solid #eee;
+            display: inline-block;
+            margin: 20px;
+            background-color: #abcdef;            
+            background-image: url("../ForMyPractice/src/images.png");
+            background-size: 100%;
+            /* animation-name: ani2;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease; */
+            animation: ani2 3s infinite linear;
+            animation-delay: 1s;
+        }
+        @keyframes ani3{
+            0%{
+                transform: perspective(100px) rotate(0deg) rotateY(0deg);       
+            }
+            50%{
+                transform: perspective(100px) rotate(180deg) rotateY(180deg);       
+                background-image: url("../ForMyPractice/src/pocketmon_back.webp");
+            }
+            100%{
+                transform: perspective(100px) rotate(360deg) rotateY(360deg);       
+            }
+        }
+        
+        @keyframes flipCard{
+            0%{
+                transform: perspective(100px) rotateY(0deg) ;       
+            }
+            50%{
+                transform: perspective(100px) rotateY(180deg) ;       
+                background-image: url("../ForMyPractice/src/pocketmon_back.webp");
+            }
+            100%{
+                transform: perspective(100px) rotateY(360deg) ;       
+            }
+        }
+
+        .box2{            
+            width: 150px;
+            height: 150px;
+            border: 1px solid #eee;
+            display: inline-block;
+            margin: 20px;
+            background-color: #abcdef;            
+            background-image: url("../ForMyPractice/src/images.png");
+            background-size: 100%;
+            animation: ani3 4s infinite linear;
+            border-radius: 50%;            
+        }
+        .card{
+            width: 120px;
+            height: 168px;
+            margin: 20px;
+            background-image: url("/ForMyPractice/src/pikachu.webp");
+            background-size: 100%;
+        }
+        .card:hover{
+            animation: flipCard 2s 1 linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <div class="card"></div>
+
+</body>
+</html>

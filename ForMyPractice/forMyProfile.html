@@ -91,6 +91,13 @@
         line-height: 40px;
         text-align: center;
     }
+    #time{
+        position: absolute;
+        left: 10px;
+        top: 15px;
+        display: inline-block;
+        font-weight: bold;
+    }
 
   </style>
 </head>
@@ -99,8 +106,9 @@
     <div id="container">
         <!-- 사이드바 -->
         <aside id="side">
+            <div id="time" >time</div>
             <input type="button" id="themeBtn" class="roundBtn" value="LightMode" onclick="changeTheme()"></input>
-            <img src="src/cat.jpeg" style=" width: 100%;margin-top: 60px;">
+            <img src="src/cat.jpeg" alt="cat" style=" width: 100%;margin-top: 60px;">
             <div id="namecard">
                 <h1>HA YUSEONG</h1>    
                 <p>안드로이드 개발자를 <br>꿈꾸고있습니다</p>
@@ -194,7 +202,15 @@
 </body>
 </html>
 <script>
-    
+    setInterval(()=>{
+        var now = new Date();
+        var hours = now.getHours().toString().padStart(2,"0");
+        var minutes = now.getMinutes().toString().padStart(2,"0");
+        var seconds = now.getSeconds().toString().padStart(2,"0");
+        document.querySelector("#time").innerHTML = 
+        `현재 시간 : ${hours}:${minutes}:${seconds}`;
+    }, 1000);
+
     function goToGit(str){
         var availWidth = screen.availWidth/6;
         var availHeight = screen.availHeight/6;
