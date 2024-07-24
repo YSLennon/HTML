@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>    
+    <body>
+    	<!-- 이미지 보여주기 -->
+        <img src="src/monsterBall.webp"
+            id="imgObj"
+            style="position:absolute; left:0px; top:0px; cursor:pointer;"
+            draggable="true">
+    </body>
+</html>
+<script>
+    window.onload = function() {
+        const imgObj = document.getElementById("imgObj");
+        let startX=0, startY=0, offsetX=0, offsetY=0;
+ 
+        imgObj.addEventListener("mousedown", function(e){
+            // 드래그시 마우스 클릭 동작 방지
+            e.preventDefault();
+ 
+            // 마우스 현재 좌표
+            startX = e.clientX;
+            startY = e.clientY;
+ 
+            // 이동중인 마우스의 좌표값 업데이트
+            offsetX = parseInt(imgObj.style.left) - startX;
+            offsetY = parseInt(imgObj.style.top) - startY;
+ 
+            // 이동중이거나 마우스 드래그 상태가 아닐때의 이벤트
+            document.addEventListener("mousemove", startMove);
+            document.addEventListener("mouseup", stopMove);
+        });
+ 
+        function startMove(e) {
+            // 이미지 드래그시 마우스 위치의 좌표로 이동
+            imgObj.style.left = e.clientX + offsetX + 'px';
+            imgObj.style.top = e.clientY + offsetY + 'px';
+        }
+ 
+        function stopMove() {
+            // 드래그 상태가 아니면 모든 이벤트 제거
+            document.removeEventListener("mousemove", startMove);
+            document.removeEventListener("mouseup", stopMove);
+        }
+    }
+</script>
