@@ -66,6 +66,7 @@
     }
     .margin{
         margin-top: 100px;
+        
     }
     .cPrimary{
         color: #eee;
@@ -98,6 +99,83 @@
         display: inline-block;
         font-weight: bold;
     }
+    @keyframes hoverBall{
+        0%{
+            transform: rotate(0deg);
+            left: 200px;
+        }
+        5%{
+            bottom: 50px;
+        }
+        10%{
+            left: 0px;
+            bottom: 20px;
+            transform: rotate(-1080deg);
+        }
+        20%{
+            bottom: 50px;
+            left: 0px;
+        }
+        30%{
+            bottom: 50px;
+            left: 0px;
+            transform: rotate(20deg);
+        }
+        40%{
+            bottom: 50px;
+            left: 0px;
+            transform: rotate(-20deg);
+        }
+        50%{
+            bottom: 50px;
+            left: 0px;
+            transform: rotate(20deg);
+        }
+        60%{
+            bottom: 50px;
+            left: 0px;
+            transform: rotate(-20deg);
+            
+        }
+        70%{
+            bottom: 50px;
+            left: 0px;
+            transform: rotate(0deg);
+        }
+        80%{
+            bottom: 50px;
+            left: 0px;
+            opacity: 1;
+        }
+        83%{
+            bottom: 50px;
+            left: 0px;
+            opacity: 0.5;
+        }
+        85%{
+            bottom: 50px;
+            left: 0px;
+            opacity: 1;
+        }
+        100%{
+            bottom: 0px;
+            left: 0px;
+        }
+
+
+    }
+    .through{
+        animation: hoverBall 2s 1;
+    }
+    .card{
+            width: 200px;
+            height: 280px;
+            border-radius: 20px;
+            box-shadow: 3px 3px 3px black;
+            background-size: 100%;
+            margin: 0px auto;
+            margin-top: 100px;
+        }
 
   </style>
 </head>
@@ -108,7 +186,8 @@
         <aside id="side">
             <div id="time" >time</div>
             <input type="button" id="themeBtn" class="roundBtn" value="LightMode" onclick="changeTheme()"></input>
-            <img src="src/cat.jpeg" alt="cat" style=" width: 100%;margin-top: 60px;">
+            <div class="card" style="background-image: url('src/pikachu.png');"></div>
+            <!-- <img src="src/cat.jpeg" alt="cat" style=" width: 100%;margin-top: 60px;"> -->
             <div id="namecard">
                 <h1>HA YUSEONG</h1>    
                 <p>안드로이드 개발자를 <br>꿈꾸고있습니다</p>
@@ -131,9 +210,22 @@
         <div id="main">
             <section>
                 <h2 class="subtitle cPrimary">자기소개</h2>
-                <p class="cSecondary" style="margin-left: 40px;">프로그래밍에 관심이 많습니다. <br>현재 열심히 공부하며 코딩 중!</p>
+                <p class="cSecondary" style="margin-left: 40px;">
+                    프로그래밍에 관심이 많습니다. 
+                    <br>현재 열심히 공부하며 코딩 중!
+                </p>
+                <p id="lnThrough" class="cSecondary" style="margin-left: 40px;">
+                    인생업적: 피카츄 카드 뒤집기
+                </p>
+
             </section>
-            <hr class="margin">
+            <div class="margin">
+                <img id="smallPikachu" src="src/smallPikachu.png" alt="smallPikachu" width="50px" style="position:relative; left:20px; bottom:0px;">
+                <img id="monsterBall" src="src/monsterBall.png" alt="smallPikachu" width="30px" style="position:relative; left:200px; bottom:0px; " onclick="throughBall()">
+                <span id="catch" class="cSecondary" style="position:relative; left:200px; bottom:20px;font-weight : bold;" >Catch Pikachu!</span>
+
+            <hr>
+            </div>  
             <!-- 경력 -->
             <section>
                 <h2 class="subtitle cPrimary">Experience</h2>
@@ -202,6 +294,47 @@
 </body>
 </html>
 <script>
+    
+
+// gotcha!
+function throughBall(){
+        var catchPikachu = document.querySelector("#catch")
+        catchPikachu.style.visibility = "hidden";
+        var monsterBall = document.querySelector("#monsterBall");
+        monsterBall.style.animation = "hoverBall 5s 1 ease-out forwards";
+        setTimeout(()=>{
+            document.querySelector("#smallPikachu").style.visibility = "hidden";
+        },450)
+        setTimeout(()=>{
+            catchPikachu.innerHTML = "Gotcha!";
+            catchPikachu.style = "position:relative; left:0px; bottom:20px; font-weight : bold";
+            setTimeout(()=>{
+                catchPikachu.style.visibility ="hidden";
+
+            },1000)
+        },5000)
+    }
+// Flip Image
+var card = document.querySelector(".card");
+    var cardFront = true;
+    card.addEventListener("mouseover", () =>{
+        if(cardFront){
+            card.style = "transform: rotateY(180deg);transition: 0.5s ease;background-image: url('src/pocketmon_back.png');";
+            cardFront = false;                  
+        } else{
+            card.style = "transform: rotateY(0deg);transition: 0.5s ease;background-image: url('src/pikachu.png');";
+            cardFront = true;
+        }
+    })
+var lnThrough = document.querySelector("#lnThrough")
+    lnThrough.addEventListener("mouseover",() =>{
+        lnThrough.style ="margin-left: 40px; color: red; text-decoration: line-through;"
+    })
+    lnThrough.addEventListener("mouseout",() =>{
+        lnThrough.style ="margin-left: 40px;"    
+    })
+
+// Time
     setInterval(()=>{
         var now = new Date();
         var hours = now.getHours().toString().padStart(2,"0");
@@ -211,6 +344,7 @@
         `현재 시간 : ${hours}:${minutes}:${seconds}`;
     }, 1000);
 
+// Git-Hub PopUp
     function goToGit(str){
         var availWidth = screen.availWidth/6;
         var availHeight = screen.availHeight/6;
@@ -222,7 +356,7 @@
          `width= 1000, height = 700, left =${availWidth}, top=${availHeight}`);
         }
     }
-
+// Screen Theme
     function changeTheme(){
         var changeMode = document.querySelector("#themeBtn").value;
         var cPrimary = document.querySelectorAll(".cPrimary");
@@ -246,7 +380,6 @@
                 input.style.backgroundColor = "#222";
             } 
         })
-        
         var cSecondary = document.querySelectorAll(".cSecondary");
         cSecondary.forEach(input =>{
             if(changeMode == "LightMode"){
@@ -255,7 +388,6 @@
                 input.style.color = "#ccc";
             }
         })
-
         var bSecondary = document.querySelectorAll(".bSecondary");
         bSecondary.forEach((input) =>{
             if(changeMode == "LightMode"){
