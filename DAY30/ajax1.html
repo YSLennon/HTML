@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">호출</button>
+    <div id="main"></div>
+</body>
+
+</html>
+<script>
+    $("#btn").on({
+        click: () => {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/users",
+                dataType: "json",
+                type: "GET",
+                data: {}, // grade : 3 -> 이런식으로 값을 넣어서 조건에 맞는 데이터만 요청
+                success: (jsonData) => {
+                    console.log(jsonData);
+                    // 통신이 정상적으로 실행됐을 때 실행하는 함수
+                    // 보통 parameter로 내가 호출한 data를 넣는다
+                    var table = document.createElement("table");
+                    var attr = document.createAttribute("style");
+                    attr.value = "border-collapse : collapse"
+                    table.setAttributeNode(attr);
+
+                    for (var i = 0; i < jsonData.length + 1; i++) {
+                        var row = document.createElement("tr");
+                        table.appendChild(row);
+                        if (i == 0) {
+                            row.innerHTML = `<td style="border: 1px solid black; padding: 3px 10px;">번호</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">이름</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">이메일</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">웹사이트</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;"></td>`;
+                        } else {
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">${i}</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">${jsonData[i - 1].name}</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">${jsonData[i - 1].email}</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;">${jsonData[i - 1].website}</td>`;
+                            row.innerHTML += `<td style="border: 1px solid black; padding: 3px 10px;"><button id = "button${jsonData[i - 1].website}" >상세정보</button></td>`;
+                        }
+
+                    }
+                    document.querySelector("#main").appendChild(table);
+
+                }
+
+            });
+        }
+    })
+</script>

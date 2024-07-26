@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jquery를 다운받아서 하는 방식 -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <!-- cdn 방식 (직접 사이트에서 가져오는 방식, 내부망만 쓰는곳에서는 못쓰니까 보통은 jquery를 다운받아서 사용한다)-->
+    <!-- CDN : Content Delivery Network -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+</head>
+<body>
+    <div id="text">첫번째 jquery</div>
+</body>
+</html>
+<script>
+    // var text = document.querySelector("#text")
+    // setTimeout(()=>{
+    //     text.innerHTML = "js방식!";
+    // }, 1000)
+
+    // jQuery 방식    
+    // .html() 기본은 get, 값을 입력하면 set으로 들어간다.
+    // jQuery 부분은 $로 대체할 수 있다.
+    // setTimeout(()=>{
+    //     // jQuery("#text").html("jQuery방식");
+    //     $("#text").html("123");
+    //     console.log(typeof $("#text").html());
+    // }, 2000)
+    
+    $("#text").on("click", () => {
+        $("#text").css("backgroundColor", "#eee")
+                  .css("border", "1px solid #ccc")
+                  .css("color", "red");
+    })
+</script>

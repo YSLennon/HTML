@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <label><input type="checkbox" checked><span> 자바 </span></label>
+    <label><input type="checkbox"><span> 오라클 </span></label>
+    <label><input type="checkbox"><span> html/css </span></label>
+    <label><input type="checkbox"><span> javascript </span></label>
+    <div>
+        <button id="btn">Button</button>
+    </div>
+    
+    <hr>
+    
+    <label><input name="subject" type="radio" value="java" checked><span> 자바 </span></label>
+    <label><input name="subject" type="radio" value="oracle"><span> 오라클 </span></label>
+    <label><input name="subject" type="radio" value="html"><span> html/css </span></label>
+    <label><input name="subject" type="radio" value="js"><span> javascript </span></label>
+
+    <div>
+        <button id="btn2">Button</button>
+    </div>
+
+</body>
+</html>
+<script>
+    $("#btn").on("click",()=>{
+        $("input ~ span").css("color","black");
+        $(":checked").next().css("color", "red");
+        $(":text").next().css("color", "blue");
+    })
+    $("#btn2").on("click",()=>{
+        $("input ~ span").css("color","black");
+        var item = $("input[name='subject']:checked") // 해당하는 객체들
+        item.val() //value값 가져오기
+        item.next().css("color", "red"); // 속성 부여
+    })
+    
+
+</script>

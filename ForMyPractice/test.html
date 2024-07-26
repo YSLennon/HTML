@@ -5,13 +5,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <style>
+                
+                div[class *= "abc"]{
+                        color: red;
+                        font-weight: bold;
+                        font-size: 20px;
+                }
+                
+                .a:first-child {
+                        color: blue;
+                }
+                .a:last-child {
+                        color: purple;
+                        font-weight: bold;
+                }
+
         </style>
 </head>
 <body>
+        <div class="a"> aaa<br>aaa
+        </div>
+        <div class="a">bbb</div>
+
        
 </body>
 </html>
 <script>
-        var list = [1,2,3,4,5,6];
-        alert(list[2]);
+
 </script>

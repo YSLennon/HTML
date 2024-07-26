@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- CDN으로 가져온 VUE -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 2px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- if문 적용 가능! -->
+        <!-- <div v-if="true">{{name}}</div> -->
+        <!-- <div >{{list}}</div> -->
+
+        <table v-if="!isInfo">
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>이메일</th>
+                <th>웹사이트</th>
+                <th></th>
+            </tr>
+            <!-- 잘 안쓰는 방식 -> item, index 둘다 넣을 수도 있긴 함 -->
+            <!-- <tr v-for="(item, index) in list"> -->
+            <tr v-for="(item, index) in list">
+                <td>{{item.id}}</td>
+                <td v-if="index <5 " style="color: blue;">{{item.name}}</td>
+                <td v-else>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.website}}</td>
+                <!-- 잘안쓰는방식 -->
+                <!-- <td><button @click="fnInfo(index)">상세보기</button></td> -->
+                <td><button @click="fnInfo(item)">상세보기</button></td>
+            </tr>
+        </table>
+        <!-- <div id="info">{{info.name}} {{info.email}}</div> -->
+        <div v-if="isInfo">
+            <div>이름: {{info.name}} </div>
+            <div>이메일: {{info.email}}</div>
+            <!-- <div><button @click="fnBack()">되돌아가기</button></div> -->
+             <!-- 직접 변수를 넣을 수도 있다! -->
+            <div><button @click="isInfo = !isInfo">되돌아가기</button></div>
+        </div>
+
+        <!-- value에 변수에 해당하는 값을 집어넣음 -->
+        <!-- <input :value="info.name"> -->
+        <!-- v-model을 넣으면 실제 변수 객체?로 잡힌다. -->
+        <!-- <input v-model="info.name"> -->
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    name: "홍길동",
+                    list: [],
+                    info: {},
+                    isInfo: false
+                };
+            },
+            methods: {
+                fnGetList() {
+                    $.ajax({
+                        url: "https://jsonplaceholder.typicode.com/users",
+                        dataType: "json",
+                        type: "GET",
+                        data: {}, // grade : 3 -> 이런식으로 값을 넣어서 조건에 맞는 데이터만 요청
+                        success: (jsonData) => {
+                            console.log(jsonData);
+                            this.list = jsonData;
+                        }
+
+                    });
+                },
+                // 잘 안쓰는 방식
+                // fnInfo(index){
+                //     alert(this.list[index].name);
+                // }
+                fnInfo(item) {
+                    // $("#info").html(`이름: ${item.name}, 메일: ${item.email}`);
+                    this.info = item;
+                    this.isInfo = !this.isInfo;
+                },
+                fnBack() {
+                    this.isInfo = false;
+                }
+            },
+            mounted() {
+                this.fnGetList();
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

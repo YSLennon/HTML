@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <style>
+        label{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <label><input type="radio" name="subject" value="java" checked>java</label>
+    <label><input type="radio" name="subject" value="oracle">oracle</label>
+    <label><input type="radio" name="subject" value="html">html/css/javascript</label>
+    <label><input type="radio" name="subject" value="jquery">jQuery</label>
+    <p><button id="btn">Button!</button></p>
+    <hr>
+    <img width="50%" style="margin: 0px auto; border: 1px solid #ccc;">
+</body>
+</html>
+<script>
+    $("#btn").on("click",()=>{
+        var item = $(":checked")
+        var src = `src/${item.val()}.jpg`
+        $("img").attr("src", src);
+    })
+</script>
