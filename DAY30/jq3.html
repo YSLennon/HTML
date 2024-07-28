@@ -14,6 +14,17 @@
         <li>javascript</li>
         <li>jquery</li>
     </ul>
+    
+    <ul>
+        <li>자바</li>
+        <li>오라클</li>
+        <li><span>html/css</span></li>
+        <li>javascript</li>
+        <li>jquery</li>
+    </ul>
+    <div>
+        dd
+    </div>
     <div>
         <button id="btn">button</button>
     </div>
@@ -23,15 +34,15 @@
     $("#btn").on("click", ()=>{
         // $("li:has(span)").css("color", "red"); // span을 가지고 있는
         // $("li:eq(2)").css("color", "red"); // index값에 해당하는
-        // $("li:gt(2)").css("color", "red"); // index가 2보다 큰
+        $("li:gt(2)").css("color", "red"); // index가 2보다 큰
         // $("li:lt(2)").css("color", "red"); // index가 2보다 작은
         // $("li:odd").css("color", "red"); // index가 홀수(실제로는 짝수)
         // $("li:even").css("color", "red"); // index가 짝수(실제로는 홀수)
         // $("li:first").css("color", "red"); // 첫번째
         // $("li:last").css("color", "red"); // 마지막
-        var items = $("li");
-        items.forEach(element => {
+        // var items = $("li");
+        // items.forEach(element => {
             
-        });
+        // });
     })
 </script>
