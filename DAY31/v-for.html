@@ -29,7 +29,14 @@
             <button @click="fnList()">Click!</button>
             <div v-for="(item,index) in list"> {{index + 1}}: {{item}} </div>
         </div>
+        <hr>
+
+            <input type="text" placeholder="검색어" v-model="newSearch">
+            <button @click="search = newSearch">검색</button>
+            <button @click="search = ''">초기화</button>
+
         <div>
+
             <table>
                 <tr>
                     <th>이름</th>
@@ -37,22 +44,34 @@
                     <th>주소</th>
                 </tr>
                 <!-- <tr v-for="item in userList" v-if="item.age >= 30"> -->
+                
                 <tr v-for="item in userList">
+                    <template v-if="search == ''">
 
-                    <!-- span태그로는 안되네? -->
-                    <td>
-                        <template v-if="item.age >= 30" style="color: blue;">{{item.name}}</template>
-                        <template v-else>{{item.name}}</template>
-                    </td>
-                    <td>{{item.age}}</td>
-                    <td>{{item.addr}}</td>
+                        <!-- span태그로는 안되네? -->
+                        <td>
+                            <template v-if="item.age >= 30" style="color: blue;">{{item.name}}</template>
+                            <template v-else>{{item.name}}</template>
+                        </td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.addr}}</td>
+                        <!-- <td v-for="a in item">{{a}}</td> -->       
+                    </template>
+                    <template v-else>
+                        <template v-if="item.name == search">
+                            <!-- span태그로는 안되네? -->
+                            <td>{{item.name}}</td>
+                            <td>{{item.age}}</td>
+                            <td>{{item.addr}}</td>
+                        </template>
+                    </template>
 
-
-                    <!-- <td v-for="a in item">{{a}}</td> -->
+                    
                 </tr>
 
             </table>
         </div>
+
     </div>
 </body>
 
@@ -61,6 +80,8 @@
     const app = Vue.createApp({
         data() {
             return {
+                search:"",
+                newSearch:"",
                 list: ['자바', '오라클', 'html/css', 'javascript'],
                 userList: [
                     { name: "고길동", age: 35, addr: "서울" },
@@ -76,6 +97,9 @@
                 for (var i = 0; i < this.list.length; i++) {
                     alert(this.list[i]);
                 }
+            },
+            fnSearchName(name){
+                
             }
             // 메소드 영역 
         },
