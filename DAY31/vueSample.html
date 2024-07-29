@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <div>{{name}}</div>
+        <div>
+            <input type="text" placeholder="이름 입력" v-model="newName" >
+            {{newName}}
+            <button @click ="fnChangeName()">이름 입력</button>
+        </div>
+        <hr>
+        <div v-if="ageVisible">{{age}}</div>
+        <div>
+            <button @click="fnViewAge()">{{buttonName}}</button>
+        </div>
+        <!-- template태그 : 별 의미 없이 조건부여만을 위한 Tag -->
+        <template v-if="!ageVisible"> Hi!</template>
+        
+        
+    </div>
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+            data() {
+                return {
+                    name: '홍길동',
+                    age: 20,
+                    newName: "",
+                    ageVisible: false,
+                    buttonName: "나이 출력"
+                };
+            },
+            methods: {
+                fnChangeName(){
+                    this.name = this.newName 
+                    this.newName =""
+                },
+                fnViewAge(){
+                    this.ageVisible = !this.ageVisible
+                    // if(this.ageVisible)
+                    //     this.buttonName = "나이 감추기"
+                    // else this.buttonName = "나이 출력"
+                    this.buttonName = this.ageVisible ? "나이 감추기" : "나이 출력"
+                }
+               
+            },
+            mounted() {
+                
+            }
+        });
+        app.mount('#app');
+</script>
+​

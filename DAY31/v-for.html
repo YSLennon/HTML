@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="fnList()">Click!</button>
+            <div v-for="(item,index) in list"> {{index + 1}}: {{item}} </div>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>주소</th>
+                </tr>
+                <!-- <tr v-for="item in userList" v-if="item.age >= 30"> -->
+                <tr v-for="item in userList">
+
+                    <!-- span태그로는 안되네? -->
+                    <td>
+                        <template v-if="item.age >= 30" style="color: blue;">{{item.name}}</template>
+                        <template v-else>{{item.name}}</template>
+                    </td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.addr}}</td>
+
+
+                    <!-- <td v-for="a in item">{{a}}</td> -->
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                list: ['자바', '오라클', 'html/css', 'javascript'],
+                userList: [
+                    { name: "고길동", age: 35, addr: "서울" },
+                    { name: "박희동", age: 3, addr: "개에바" },
+                    { name: "김둘리", age: 5000, addr: "빙하" },
+                    { name: "도우너", age: 50, addr: "깐따삐야☆" }
+                ]
+                // 변수 영역, ex) name : '홍길동', age : 20
+            };
+        },
+        methods: {
+            fnList() {
+                for (var i = 0; i < this.list.length; i++) {
+                    alert(this.list[i]);
+                }
+            }
+            // 메소드 영역 
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+    app.mount('#app');
+</script>
