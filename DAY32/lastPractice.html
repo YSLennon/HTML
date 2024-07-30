@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <style>
+        body {
+            background-color: #eee;
+        }
+        div ~ input, select {
+            width : 300px;
+            height: 30px;
+            margin-bottom: 10px;
+            display: block;
+            border: 1px solid gray;
+            border-radius: 10px;
+        }
+        #container{
+            background-color: white;
+            margin: 40px auto;
+            width: 350px;
+            height: 450px;
+            border-radius: 10px;
+            align-content: center;
+
+        }
+        #app{
+            width: 90%;
+            opacity: 0.7;
+            margin: 0px auto;
+            
+        }
+        select{
+            width: 308px;
+            height: 35px;
+            padding-left: 10px;
+        }
+        button{
+            border-radius: 10px;
+            width: 300px;
+            height: 40px;
+            color: white;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <div id="app">
+            <h3>학생 추가</h3>
+            <div>학번</div>
+            <input v-model="stuNo">
+            <div>이름</div>
+            <input v-model="name">
+            <div>학과</div>
+            <input v-model="dept">
+            <div>학년</div>
+            <select v-model="grade">
+                <option value="">학년을 선택하세요</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <label><input name="gender" type="radio" value="M" checked v-model="gender">남자</label>
+            <label><input name="gender" type="radio" value="F" v-model="gender">여자</label>
+            <div><button @click="fnInsert()">제출</button></div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                stuNo: '',
+                name: '',
+                dept: '',
+                grade: '',
+                gender: 'M'
+            };
+        },
+        methods: {
+            fnGetList(){
+                $.ajax({
+                    url : "http://localhost:3000/update",
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                        console.log(data);
+                    }
+                });
+            },
+            fnInsert(){
+                var query = `stuNo=${this.stuNo}&name=${this.name}&dept=${this.dept}&grade=${this.grade}&gender=${this.gender}`
+                $.ajax({
+                    url : "http://localhost:3000/insert?"+query,
+                    dataType : "json",
+                    type : "GET",
+                    data : {},
+                    success : function(data){
+                        console.log(data);
+                        alert(data.message);
+                    }
+                });
+
+            }
+        },
+        mounted() {
+           
+        }
+    });
+    app.mount('#app');
+</script>
