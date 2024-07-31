@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        #app{
+            width: 500px;
+            height: 600px;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin: 50px auto;;
+            align-content: center;
+            
+        }
+        label input{
+            margin: 10px;
+            width: 300px;
+            height: 30px;
+            border-radius: 10px;
+        }
+        button{
+            
+            margin: 10px;
+            width: 300px;
+            height: 30px;
+            border-radius: 10px;
+        }
+        div{
+            width: 350px;
+            margin: 0px auto;
+        }
+        label{
+            font-size: 15px;
+            font-weight: bold;
+            margin: 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label>
+                아이디 {{user.id}}<br>
+                <input v-if="!checkId" type="text" placeholder="아이디" v-model="user.id">
+                <input v-else disabled type="text" placeholder="아이디" v-model="user.id">
+                <button @click="fnCheckId()">중복 체크</button>
+            </label>
+        </div>
+        <div>
+            <label>비밀번호<br><input type="password" placeholder="비밀번호" v-model="user.pwd"></label>
+        </div>
+
+        <div>
+            <label>비밀번호 확인<br> <input type="password" placeholder="비밀번호 확인" v-model="user.c_pwd"></label>
+        </div>
+
+        <div>
+            <label>이름<br> <input type="text" placeholder="이름" v-model="user.username"></label>
+        </div>
+        <div>
+            <label>메일<br> <input type="text" placeholder="이메일" v-model="user.email"></label>
+        </div>
+        <div>
+            <label>전화번호<br> <input type="text" placeholder="전화번호" v-model="user.phone"></label>
+        </div>
+        <div>
+            <input type="radio" name="gender" value="M" v-model="user.gender">남자
+            <input type="radio" name="gender" value="F" v-model="user.gender">여자
+        </div>
+        <div>
+            <button @click="fnJoin()">회원가입</button>
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                user: { // 사용자 정보 map
+                    id: '', // id for login
+                    pwd: '', // pwd for login
+                    c_pwd:'',
+                    username: '',
+                    email: '',
+                    phone: '',
+                    gender: ''
+                },
+                isEmpty: true,
+                checkId: false
+                // 변수 영역, ex) name : '홍길동', age : 20
+            };
+        },
+        methods: {
+            fnCheckId(){
+                $.ajax({
+                    url: "http://localhost:3000/checkId",
+                    dataType: "json",
+                    type: "POST",
+                    data: JSON.stringify(this.user),
+                    contentType: "application/json",
+                    success: (data) => {
+                        if(data) {
+                             alert("가입불가요~")
+                        this.checkId = false;
+
+                        } else{
+                            alert("가입 가능한 ID입니다.")
+                            this.checkId = true;
+                           
+                        }
+                        
+
+                        // console.log(data[0].CNT)
+                        // if(data[0].CNT >0){
+                        //     alert('로그인됩니다')
+                        //     location.href="../DAY32/lastPractice.html"
+                        // } else{
+                        //     alert('아디비번 틀렸는데요?')
+                        // }
+
+                    }
+
+                });
+
+            },
+            fnJoin() {
+
+                // 빈값 로직 다시 짜기
+                var a = Object.entries(this.user)
+                .forEach(([key, value]) => {
+                    this.isEmpty = false
+                    console.log(value)
+                    if (value === '') {
+                        // alert(`${key} 값을 입력해주세요`);
+                        this.isEmpty = true;
+                    }
+                });
+                console.log(a)
+                // 빈값 있을 시 리턴
+                if (this.isEmpty) {
+                    alert('빈값을 입력해주세요')
+                    return
+                };
+
+                //  - 아이디는 우선적으로 중복 체크 후 회원가입 가능하도록 할 것
+                if(!this.checkId){
+                    alert('ID의 중복체크를 해주세요')
+                    return;
+                }
+
+                // 길이 체크
+                if (this.user.id.length < 5) {
+                    alert("id는 5글자 이상 입력해주세요");
+                    return;
+                } else if (this.user.pwd.length < 6) {
+                        alert("pwd는 6글자 이상 입력해주세요");
+                        return;
+                }
+                //  - 비밀번호, 비밀번호 확인 두 값이 다를 경우 가입 불가
+                if (this.user.pwd != this.user.c_pwd){
+                    alert('비밀번호와 비밀번호 확인은 동일해야합니다.')
+                    return;
+                }
+
+
+                $.ajax({
+                    url: "http://localhost:3000/joinPage",
+                    dataType: "json",
+                    type: "POST",
+                    data: JSON.stringify(this.user),
+                    contentType: "application/json",
+                    success: (data) => {
+                        alert(data.message);
+                        location.href="login_page.html";
+                    }
+
+
+                });
+            }
+            // 메소드 영역 
+        },
+        mounted() {
+            // 처음 시작할 때 실행되는 부분
+        }
+    });
+    app.mount('#app');
+</script>
+

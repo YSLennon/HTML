@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input placeholder="학번" v-model="list.stuNo">
+        <input placeholder="이름" v-model="list.name">
+        <input placeholder="학과" v-model="list.dept">
+        <button @click="lastPractice()">추가</button>
+        <button @click="lastDelete()">삭제</button>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                list: {}
+            };
+        },
+        methods: {
+            lastPractice() { 
+                $.ajax({
+                    url: `http://localhost:3000/lastPractice`,
+                    dataType: "json",
+                    type: "POST",
+                    data: JSON.stringify(this.list),
+                    contentType: "application/json",
+                    success: (data) => {
+                        alert(data.msg);
+                    }
+                       
+                });
+            },
+            lastDelete() {
+                $.ajax({
+                    url: 'http://localhost:3000/lastDelete',
+                    dataType:"json",
+                    type: "POST",
+                    data: JSON.stringify(this.list),
+                    contentType: "application/json",
+                    success: (data)=>{
+                        alert(data.msg)
+                    }
+                })
+            }
+
+        },
+        mounted() {
+        }
+    });
+    app.mount('#app');
+</script>
