@@ -98,7 +98,7 @@
                     phone: '',
                     gender: ''
                 },
-                isEmpty: true,
+                isEmpty: false,
                 checkId: false
                 // 변수 영역, ex) name : '홍길동', age : 20
             };
@@ -137,19 +137,24 @@
 
             },
             fnJoin() {
-                Array.
-
+                console.log()
+                var b = Object.values(this.user).forEach((value) => {
+                    if(value === '') {
+                        this.isEmpty = true;
+                        return ;
+                    }
+                })
+                console.log(this.isEmpty);
                 // 빈값 로직 다시 짜기
                 var a = Object.entries(this.user)
                 .forEach(([key, value]) => {
-                    this.isEmpty = false
                     console.log(value)
                     if (value === '') {
                         // alert(`${key} 값을 입력해주세요`);
                         this.isEmpty = true;
                     }
                 });
-                console.log(a)
+                
                 // 빈값 있을 시 리턴
                 if (this.isEmpty) {
                     alert('빈값을 입력해주세요')
