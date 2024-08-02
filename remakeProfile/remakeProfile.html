@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .category {}
+
+        .leftBar {
+            box-sizing: border-box;
+            position: fixed;
+            left: 0px;
+            width: 300px;
+            height: 100%;
+            border: 1px solid black;
+
+        }
+
+        #profileLayout {
+            width: 100%; 
+            height: 30%; 
+            border: 1px solid black;
+        }
+        #categoryLayout{
+            box-sizing: border-box;
+            width: 100%; 
+            height: 60%; 
+            padding: 40px 0px;
+            border: 1px solid black;
+        }
+
+        #sideFooter{
+            width: 100%; 
+            height: 10%; 
+            border: 1px solid black;
+        }
+
+        .container {
+            border: 1px solid black;
+            width: calc(100% - 300px);
+            height: 2000px;
+            position: fixed;
+            left: 300px;
+        }
+
+
+        .title {
+            display: sideBlock;
+            width: 100%;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .main {
+            box-sizing: border-box;
+            float: left;
+            display: sideBlock;
+            width: calc(100% - 300px);
+            height: 100%;
+            border: 1px solid black;
+        }
+
+        /* media 처리해서 일정 사이즈 이상일때만 보이게 설정해두자 */
+        .rightBar {
+            box-sizing: border-box;
+            float: right;
+            width: 300px;
+            height: 100%;
+            /* overflow: hidden; */
+            animation: hello 2s forwards;
+            border: 1px solid black;
+            display: block;
+        }
+
+        .subject {
+            border: 1px solid black;
+        }
+
+
+        .curved {
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .sideBlock {
+            font-weight: bold;
+            margin: 10px auto;
+            padding-left: 40px;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid black;
+        }
+
+        @keyframes hello {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .rightBar {
+                display: none;
+            }
+
+            .main {
+                width: calc(100%);
+            }
+
+        }
+        @media screen and (min-width: 1001px) {
+            .rightBar {
+                display: block;
+                
+            }
+
+            .main {
+                width: calc(100% - 300px);   
+            }
+
+        }
+
+
+        .mainColor {
+            background-color: #eee;
+            color: #020202;
+        }
+
+        .primaryColor {
+            background-color: #eee;
+            color: #020202;
+        }
+
+        .secondaryColor {
+            background-color: #eee;
+            color: #020202;
+        }
+
+        .darkMainColor {}
+
+        .darkPrimaryColor {}
+
+        .darkSecondaryColor {}
+    </style>
+</head>
+
+<body class="main">
+    <aside class="leftBar fixed secondaryColor">
+        <div id="profileLayout" class="secondaryColor">
+            profileLayout
+            사진<br>
+            설명 문구 etc
+        </div>
+        <div id="categoryLayout" class="secondaryColor">
+categoryLayout
+            <div class="sideBlock curved">
+                HOME
+            </div>
+            <div class="sideBlock curved">
+                CATEGORIES
+            </div>
+            <div class="sideBlock curved">
+                TAGS
+            </div>
+            <div class="sideBlock curved">
+                ARCHIVES
+            </div>
+            <div class="sideBlock curved">
+                ABOUT
+            </div>
+        </div>
+        <div id="sideFooter" class="secondaryColor">
+            sideFooter
+            깃, 다크모드 등
+        </div>
+
+        leftBar
+    </aside>
+
+    <section class="container mainColor">
+
+        <h1 class="title mainColor">
+            Title
+        </h1>
+
+        <div class="main mainColor">
+            <h2>main</h2>
+        </div>
+
+        <aside class="rightBar secondaryColor">
+            rightBar
+        </aside>
+    </section>
+
+
+</body>
+
+</html>
