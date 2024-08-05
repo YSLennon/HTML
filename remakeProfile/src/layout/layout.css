@@ -1,16 +1,335 @@
-#leftBar{
-    
+* {
+    padding: 0px;
+    margin: 0px;
 }
-#rightBar{
+
+.category {}
+
+.leftBar {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0px;
+    width: 300px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.leftBar::-webkit-scrollbar {
+    width: 12px;
+}
+
+#profileLayout {
+
+    width: 100%;
+    /* height: 35%; */
+    height: 400px;
+}
+
+#time {
+    text-align: right;
+    display: block;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.card {
+    width: 160px;
+    height: 225px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px black;
+    background-size: 100%;
+    margin: 0px auto;
+    margin-top: 20px;
+}
+
+#profileContent {
+    margin-left: 40px;
+    margin-top: 20px;
 
 }
-#Title{
+
+#categoryLayout {
+    box-sizing: border-box;
+    width: 100%;
+    height: 500px;
+    padding: 40px 0px;
+    margin-top: 50px;
+}
+
+#sideFooter {
+    box-sizing: border-box;
+    width: 100%;
+    height: 140px;
+    padding: 20px;
+    margin-top: 100px;
 
 }
-#Main{
+
+.container {
+    box-sizing: border-box;
+    width: calc(100% - 300px);
+    height: 1500px;
+    position: absolute;
+    left: 300px;
+    border: 1px solid #eee;
+    overflow-y: auto;
+}
+
+.container::-webkit-scrollbar {
+    width: 1px;
+}
+
+
+.title {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    padding-left: 30px;
+    padding-bottom: 50px;
     
 }
-#subject{
+
+#titleTxt {
+    /* float: left; */
+    height: 100%;
+    padding-top: 50px;
+    font-size: 110%;
+}
+
+#catchZone {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    bottom: -200%;
+    left: 38%;
+    font-size: 50%;
+}
+
+.main {
+    box-sizing: border-box;
+    float: left;
+    width: calc(100% - 300px);
+    height: 100%;
+    padding: 20px 50px;
+}
+li{
+    line-height: 25px;
+    margin-left: 40px;
+    list-style: none;
+}
+table{
+    border-collapse: collapse;
+}
+th, td{
+    border: 1px solid #eee;
+    padding: 10px 20px;
+}
+
+.cat{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) ;
+    grid-template-rows: repeat(auto-fit, minmax(300px, 300px)) ;
+    margin: 20px;
+    gap: 10px;
+}
+.galleryContents{
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px black;
+    padding: 5px;
+    line-height: 25px;
+}
+.firstContents{
+    grid-column: 1/3;
+    grid-row: 1/3;
+    padding: 10px;
+    line-height: 40px;
+
+}
+.galleryPicture{
+    width: 80%;
+    height: auto;
+}
+
+/* media 처리해서 일정 사이즈 이상일때만 보이게 설정해두자 */
+.rightBar {
+    box-sizing: border-box;
+    float: right;
+    width: 300px;
+    height: 100%;
+    padding: 1500px auto;
+    animation: slide 2s forwards;
+    display: block;
+}
+
+.rightContent {
+    margin: 50px auto;
+    width: 200px;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+    line-height: 20px;
+    opacity: 0.4;
+}
+
+.subject {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.contentText{
+    line-height: 25px;
+    margin-left: 40px;
+}
+
+.curved {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+}
+
+#githubIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #eee;
+    border: #020202;
+}
+
+#githubIcon:hover {
+    box-shadow: 2px 2px 2px gray;
+    background-color: #4F6778;
+}
+
+.themeBtn {
+    width: 80px;
+    height: 30px;
+    display: inline-block;
+    float: right;
+    bottom: 20px;
+    background-color: #eee;
+}
+
+.themeBtn:hover {
+    opacity: 0.7;
+    box-shadow: 1px 1px 1px;
+}
+
+.sideBlock {
+    font-weight: bold;
+    margin: 10px auto;
+    padding-left: 40px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+}
+
+@keyframes slide {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .rightBar {
+        display: none;
+    }
+
+    .main {
+        width: calc(100%);
+    }
+
+}
+
+@media screen and (max-width: 870px) {
+
+    #catchZone {
+        visibility: hidden;
+    }
+
+}
+
+@keyframes hoverBall {
+    0% {
+        transform: rotate(0deg);
+        left: 125px;
+    }
+
+    5% {
+        bottom: 70%;
+    }
+
+    10% {
+        left: 0px;
+        bottom: 30%;
+        transform: rotate(-1080deg);
+    }
+
+    20% {
+        bottom: 70%;
+        left: 0px;
+    }
+
+    30% {
+        bottom: 70%;
+        left: 0px;
+        transform: rotate(20deg);
+    }
+
+    40% {
+        bottom: 70%;
+        left: 0px;
+        transform: rotate(-20deg);
+    }
+
+    50% {
+        bottom: 70%;
+        left: 0px;
+        transform: rotate(20deg);
+    }
+
+    60% {
+        bottom: 70%;
+        left: 0px;
+        transform: rotate(-20deg);
+
+    }
+
+    70% {
+        bottom: 70%;
+        left: 0px;
+        transform: rotate(0deg);
+    }
+
+    80% {
+        bottom: 70%;
+        left: 0px;
+        opacity: 1;
+    }
+
+    83% {
+        bottom: 70%;
+        left: 0px;
+        opacity: 0.5;
+    }
+
+    85% {
+        bottom: 70%;
+        left: 0px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 0px;
+        left: 0px;
+        display: none;
+    }
+
 
 }
 

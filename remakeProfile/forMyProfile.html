@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="src/layout/layout.css">
+    <link rel="stylesheet" href="src/layout/color.css">
+</head>
+
+<body>
+    <!-- leftBar -->
+    <aside class="leftBar fixed primaryColor">
+        <!-- profileLayout -->
+        <div id="profileLayout" class="primaryColor">
+            <div id="time">time</div>
+
+            <div class="card" style="background-image: url('src/images/pikachu.png');"></div>
+
+            <p id="profileContent" class="primaryColor">
+                프로그래밍에 관심이 많습니다.
+                <br>현재 열심히 공부하며 코딩 중!
+            </p>
+        </div>
+        <!-- categoryLayout -->
+        <div id="categoryLayout" class="primaryColor">
+            <!-- 미사용 div -->
+            <!-- <div>
+                <div class="sideBlock curved secondaryColor">
+                    HOME
+                </div>
+                <div class="sideBlock curved secondaryColor">
+                    CATEGORIES
+                </div>
+                <div class="sideBlock curved secondaryColor">
+                    TAGS
+                </div>
+                <div class="sideBlock curved secondaryColor">
+                    ARCHIVES
+                </div>
+                <div class="sideBlock curved secondaryColor">
+                    ABOUT
+                </div>
+             </div> -->
+            <div class="sideBlock curved secondaryColor">
+                Home
+            </div>
+            <div class="sideBlock curved secondaryColor">
+                Experience
+            </div>
+            <div class="sideBlock curved secondaryColor">
+                TechStack
+            </div>
+            <div class="sideBlock curved secondaryColor">
+                Education
+            </div>
+            <div class="sideBlock curved secondaryColor">
+                Cat
+            </div>
+
+        </div>
+        <!-- sideFooter -->
+        <div id="sideFooter" class="primaryColor">
+            <img id="githubIcon" src="src/images/githubIcon.png" alt="toGitHubIcon" onclick="goToGit()">
+            <button id="themeBtn" class="themeBtn curved reverseColor" onclick="fnDarkMode(innerHTML)"></button>
+
+        </div>
+
+    </aside>
+    <!-- container -->
+    <section id="app" class="container mainColor">
+        <!-- title -->
+        <h1 class="title mainColor">
+            <div id="catchZone">
+                <img id="smallPikachu" src="src/images/smallPikachu.png" alt="smallPikachu" height="80%"
+                    style="position:relative; left:0px; bottom:0px;">
+                <img id="monsterBall" src="src/images/monsterBall.png" alt="smallPikachu" height="60%"
+                    style="position:relative; left: 125px; bottom:0%; " onclick="throughBall()">
+                <span id="catch" class="mainColor"
+                    style="position:relative; left:120px; bottom:40%;font-weight : bold;">Catch Pikachu!</span>
+            </div>
+            <div id="titleTxt">
+                {{category}}
+            </div>
+
+        </h1>
+
+
+        <!-- main -->
+
+        <!-- Home -->
+        <template v-if="category === 'Home'">
+            <div class="main mainColor">
+                <hr style="opacity: 0.5;">
+                <h2 class="subject Home">자기소개1</h2>
+                <h2 class="subject Home">자기소개2</h2>
+                <h2 class="subject Home">자기소개3</h2>
+                <p class="contentText">
+                    프로그래밍에 관심이 많습니다.
+                    <br>현재 열심히 공부하며 코딩 중!
+                </p>
+
+            </div>
+            <!-- rightBar -->
+            <aside class="rightBar Home mainColor">
+            </aside>
+        </template>
+
+
+        <!-- Experience -->
+        <template v-if="category === 'Experience'">
+            <div class="main mainColor">
+                <hr style="opacity: 0.5;">
+                <div class="subject Experience">안드로이드</div>
+                <ul>
+                    <li>자바</li>
+                    <li>코틀린</li>
+                    <li>파이어베이스</li>
+                </ul>
+                <div class="subject Experience">프론트엔드</div>
+                <ul>
+                    <li>HTML/CSS/JAVASCRIPT </li>
+                    <li>웹 페이지 잘 만든다 </li>
+                    <li>다 잘함</li>
+                </ul>
+                <div class="subject Experience">백엔드</div>
+                <ul>
+                    <li>자바 잘함 </li>
+                    <li>오라클 더 잘함</li>
+                </ul>
+
+            </div>
+            <!-- rightBar -->
+            <aside class="rightBar Experience mainColor">
+            </aside>
+        </template>
+
+
+        <!-- TechStack -->
+        <template v-if="category === 'TechStack'">
+            <div class="main mainColor">
+                <hr style="opacity: 0.5;">
+                <ul>
+                    <li class="subject TechStack">자바 </li>
+                    <li class="subject TechStack">오라클</li>
+                    <li class="subject TechStack">코틀린</li>
+                </ul>
+            </div>
+            <!-- rightBar -->
+            <aside class="rightBar TechStack mainColor">
+            </aside>
+        </template>
+
+
+        <!-- Education -->
+        <template v-if="category === 'Education'">
+            <div class="main mainColor">
+                <hr style="opacity: 0.5;">
+
+                <table>
+                    <caption class="subject">학력 사항</caption>
+                    <thead>
+                        <tr>
+                            <th>출신학교</th>
+                            <th>전공</th>
+                            <th>기간</th>
+                            <th>구분</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>송도고등학교</td>
+                            <td>이과</td>
+                            <td>2010.3 ~ 2013.2</td>
+                            <td>졸업</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- rightBar -->
+            <aside class="rightBar mainColor">
+        </template>
+
+
+        <!-- About -->
+        <template v-if="category === 'Cat'">
+            <div class="main mainColor ">
+                <hr style="opacity: 0.5;">
+                <div class="cat">
+                    <div class="galleryContents firstContents reverseColor darkReverseColor">
+                        <h1>사진 제목</h1>
+                        <img src="src/images/1.jpg" class="galleryPicture reverseColor">
+                        <div>사진 설명 : cat is perfect! so lovely and cuty animals..</div>
+                        <div> that's true! i admit your opinion</div>
+                        <div> dog is cute too, but i think cat is cuter than dog</div>
+                        <div> the great king god emperor magesty perfect animal is the cat</div>
+
+                    </div>
+                    <div class="galleryContents reverseColor darkReverseColor">
+                        <h3>사진 제목</h3>
+                        <img src="src/images/2.jpg" class="galleryPicture">
+                        <div>사진 설명 : that's true! i admit your opinion</div>
+                    </div>
+                    <div class="galleryContents reverseColor darkReverseColor">
+                        <h3>사진 제목</h3>
+                        <img src="src/images/3.png" class="galleryPicture">
+                        <div>사진 설명 : dog is cute too, but i think cat is cuter than dog</div>
+                    </div>
+                    <div class="galleryContents reverseColor darkReverseColor">
+                        <h3>사진 제목</h3>
+                        <img src="src/images/4.jpg" class="galleryPicture">
+                        <div>사진 설명 : the great king god emperor magesty perfect animal is the cat</div>
+                    </div>
+                    <div class="galleryContents reverseColor darkReverseColor">
+                        <h3>사진 제목</h3>
+                        <img src="src/images/1.jpg" class="galleryPicture">
+                        <div>사진 설명 : cat is perfect! so lovely and cuty animals..</div>
+                    </div>
+                    <div class="galleryContents reverseColor darkReverseColor">
+                        <h3>사진 제목</h3>
+                        <img src="src/images/2.jpg" class="galleryPicture">
+                        <div>사진 설명 : that's true! i admit your opinion</div>
+                    </div>
+                </div>
+            </div>
+            <!-- rightBar -->
+            <aside class="rightBar mainColor">
+                <div class="rightContent">귀여운 고양이</div>
+            </aside>
+        </template>
+
+
+    </section>
+
+
+</body>
+
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                category: 'Home'
+            };
+        },
+        methods: {
+            presentMenu() {
+                document.querySelectorAll(".sideBlock").forEach(block => {
+
+                    block.addEventListener('mouseup', () => {
+                        this.category = block.innerText;
+
+                        this.$nextTick(() => {
+                            this.fnRightBar(this.category);
+                        })
+
+
+                    })
+
+                })
+            },
+            fnRightBar(str) {
+
+                let strRightBar = document.querySelector(`.rightBar.${str}`);
+                strRightBar.innerHTML = ''
+                document.querySelectorAll(`.subject.${str}`).forEach(str => {
+                    var rightContent = document.createElement('div');
+                    rightContent.innerHTML = str.innerHTML;
+                    rightContent.classList.add('rightContent')
+                    strRightBar.appendChild(rightContent);
+                })
+
+            }
+
+        },
+        watch: {
+            category(newCategory) {
+                this.$nextTick(() => {
+                    this.fnRightBar(newCategory);
+                })
+            }
+        },
+        mounted() {
+            this.presentMenu();
+
+
+        }
+    });
+    app.mount('#app');
+
+    fnDarkMode();
+    flipCard();
+    btnMouseOver();
+    fnRightBar();
+
+
+    function fnRightBar() {
+
+        let homeRightBar = document.querySelector(".rightBar.Home");
+        document.querySelectorAll(".subject.Home").forEach(home => {
+            var rightContent = document.createElement('div');
+            rightContent.innerHTML = home.innerHTML;
+            rightContent.classList.add('rightContent')
+            homeRightBar.appendChild(rightContent);
+            console.log(homeRightBar)
+            // homeRightBar.innerHTML = `${homeRightBar.innerHTML} <br> ${home.innerHTML} `
+        })
+
+
+    }
+
+
+
+    // Time
+    setInterval(() => {
+        var now = new Date();
+        var hours = now.getHours().toString().padStart(2, "0");
+        var minutes = now.getMinutes().toString().padStart(2, "0");
+        var seconds = now.getSeconds().toString().padStart(2, "0");
+        document.querySelector("#time").innerHTML =
+            `현재 시간 : ${hours}:${minutes}:${seconds}`;
+    }, 1000);
+
+    // category effect
+    function btnMouseOver() {
+        // Btn Mouseover 
+        document.querySelectorAll(".sideBlock").forEach(block => {
+            block.addEventListener('mouseover', () => {
+                var nextTheme = document.querySelector('#themeBtn').innerHTML;
+
+                if (nextTheme === 'LightMode') {
+                    block.classList.add('darkSecondaryColor');
+                    block.classList.remove('darkPrimaryColor');
+                } else {
+                    block.classList.add('lightSecondaryColor');
+                    block.classList.remove('lightPrimaryColor');
+                }
+
+            })
+        })
+
+        // Btn Mouseout
+        document.querySelectorAll(".sideBlock").forEach(block => {
+            block.addEventListener('mouseout', () => {
+                var nextTheme = document.querySelector('#themeBtn').innerHTML;
+
+                if (nextTheme === 'LightMode') {
+                    block.classList.add('darkPrimaryColor');
+                    block.classList.remove('darkSecondaryColor');
+
+                } else {
+                    block.classList.add('lightPrimaryColor');
+                    block.classList.remove('lightSecondaryColor');
+                }
+            })
+        })
+        document.querySelectorAll(".sideBlock").forEach(block => {
+            block.addEventListener('mousedown', () => {
+                block.style = 'opacity: 0.7'
+            })
+            block.addEventListener('mouseup', () => {
+                block.style = 'opacity: 1.0'
+            })
+        })
+    }
+
+    // Flip Image
+    function flipCard() {
+        var card = document.querySelector(".card");
+        var cardFront = true;
+        card.addEventListener("mouseover", () => {
+            if (cardFront) {
+                card.style = "transform: rotateY(180deg);transition: 0.5s ease;background-image: url('src/images/pocketmon_back.png');";
+                cardFront = false;
+            } else {
+                card.style = "transform: rotateY(0deg);transition: 0.5s ease;background-image: url('src/images/pikachu.png');";
+                cardFront = true;
+            }
+        })
+    }
+
+    // GoToGithub
+    function goToGit() {
+        var availWidth = screen.availWidth / 6;
+        var availHeight = screen.availHeight / 6;
+        window.open("https://github.com/YSLennon", 'GitHub/YSLennon',
+            `width= 1000, height = 700, left =${availWidth}, top=${availHeight}`);
+    }
+
+    //Gotcha pikachu
+    let throughBallFlg = true;
+    function throughBall() {
+        if (throughBallFlg) {
+            var catchPikachu = document.querySelector("#catch")
+            catchPikachu.style.visibility = "hidden";
+            var monsterBall = document.querySelector("#monsterBall");
+            monsterBall.style.animation = "hoverBall 5s 1 ease-out forwards";
+            setTimeout(() => {
+                document.querySelector("#smallPikachu").style.visibility = "hidden";
+            }, 450)
+            setTimeout(() => {
+                catchPikachu.innerHTML = "Gotcha!";
+                catchPikachu.style = "position:relative; left:0px; bottom:20px; font-weight : bold";
+                setTimeout(() => {
+                    catchPikachu.style.visibility = "hidden";
+                }, 1000)
+            }, 5000)
+            throughBallFlg = false;
+        }
+    }
+    // Set Theme
+    function fnDarkMode(nextTheme) {
+
+        const mainColor = document.querySelectorAll(".mainColor");
+        const primaryColor = document.querySelectorAll(".primaryColor");
+        const secondaryColor = document.querySelectorAll(".secondaryColor");
+        const reverseColor = document.querySelectorAll(".reverseColor");
+        console.log(document.querySelector('#themeBtn').innerHTML);
+
+        if (nextTheme === 'LightMode') {
+            mainColor.forEach(color => {
+                color.classList.add('lightMainColor')
+                color.classList.remove('darkMainColor')
+            })
+            primaryColor.forEach(color => {
+                color.classList.add('lightPrimaryColor')
+                color.classList.remove('darkPrimaryColor')
+            })
+            secondaryColor.forEach(color => {
+                color.classList.add('lightPrimaryColor')
+                color.classList.remove('darkPrimaryColor')
+            })
+            reverseColor.forEach(color => {
+                color.classList.add('lightReverseColor')
+                color.classList.remove('darkReverseColor')
+            })
+            document.querySelector('#themeBtn').innerHTML = 'DarkMode';
+        } else {
+            mainColor.forEach(color => {
+                color.classList.add('darkMainColor')
+                color.classList.remove('lightMainColor')
+            })
+            primaryColor.forEach(color => {
+                color.classList.add('darkPrimaryColor')
+                color.classList.remove('lightPrimaryColor')
+            })
+            secondaryColor.forEach(color => {
+                color.classList.add('darkPrimaryColor')
+                color.classList.remove('lightPrimaryColor')
+            })
+            reverseColor.forEach(color => {
+                color.classList.add('darkReverseColor')
+                color.classList.remove('lightReverseColor')
+            })
+            document.querySelector('#themeBtn').innerHTML = 'LightMode';
+        }
+    }
+</script>
