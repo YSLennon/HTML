@@ -5,109 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #sideBar {
-            font-weight: bold;
-            opacity: 0.9;
-            background-color: #EEE;
-            box-sizing: border-box;
-            display: inline-block;
-            width: 300px;
-            height: 750px;
-            padding: 10px;
-        }
-
-        #profile {
-            box-sizing: border-box;
-            padding: 30px;
-            margin-bottom: 10px;
-            background-color: white;
-            height: 300px;
-            text-align: center;
-            padding-top: 50px;
-        }
-
-        #statusZone {
-            margin: 30px 20px;
-        }
-
-        #latestActivity {
-            margin: 30px 20px;
-        }
-
-        #viewMyHistory {
-            opacity: 1.0;
-            color: #abcdef;
-        }
-        #viewMyHistory:link{
-            line-height: 10px;
-        }
-
-        #tagZone {
-            background-color: #eee;
-            float: left;
-            width: 140px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        .tagIcon {
-            box-sizing: border-box;
-            display: inline-block;
-            width: 50px;
-            margin: 2px 45px;
-        }
-
-        #history {
-            padding: 10px;
-            clear: left;
-            margin-bottom: 10px;
-            background-color: white;
-            height: 250px;
-        }
-
-        .historyBlock {
-            box-sizing: border-box;
-            margin: 10px;
-            background-color: #eee;
-            border-radius: 10px;
-            width: 90%;
-            height: 20%;
-        }
-
-        #historyArea {
-            margin: 2px 10px;
-            font-weight: bold;
-            float: left;
-        }
-
-        #historyDistance {
-            margin: 2px 10px;
-            font-weight: bold;
-            float: right;
-        }
-
-        #eventDate {
-            margin: 1px 10px;
-            clear: both;
-        }
-
-        #trip {
-            box-sizing: border-box;
-            padding: 20px;
-            text-align: center;
-            font-size: 20px;
-            margin-bottom: 10px;
-            background-color: white;
-            height: 80px;
-        }
-    </style>
+    <link rel="stylesheet" href="src/layout/layout.css">
 </head>
 
 <body>
@@ -125,10 +23,10 @@
             </a>
         </div>
 
-        <div id="tagZone" style="background-color: white;">
+        <div id="sideTagZone" style="background-color: white;">
             <img class="tagIcon" src="src/icon/icon_shoe.png" alter="shoeImage">
         </div>
-        <div id="tagZone">
+        <div id="sideTagZone">
             <img class="tagIcon" src="src/icon/icon_bicycle.png" alter="bicycleImage">
         </div>
 

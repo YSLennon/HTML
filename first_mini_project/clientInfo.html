@@ -4,103 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* 미디어로 사이즈 조절해두기! 데스크탑만 제한하면 될듯? */
-        body{
-            padding: 0px;
-            margin: 0px;
-        }
-        .joinContainer{
-            box-sizing: border-box;
-            position:fixed;
-            left: 15%;
-            top: 5%;
-            width: 70%;
-            height: 90%;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0px 0px 5px gray;
-        }
-        #joinTitle{
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            margin: 20px 30px;
-        }
-        .joinLine{
-            display: block;
-            box-sizing: border-box;
-            margin: 10px;
-            width: 100%;
-            height: 40px;
-        }
-        .inputName{
-            font-weight: bold;
-            display: inline-block;
-            width: 18%;
-        }
-        input{
-            box-sizing: border-box;
-            padding: 20px;
-            font-size: 15px;
-            width: 60%;
-            height: 40px;
-            border-radius: 10px;
-            background-color: #eee;
-        }
-        button{
-            box-sizing: border-box;
-            padding: 5px 20px;
-            font-size: 15px;
-            font-weight: bold;
-            width: fit-content;
-            border-radius: 10px;
-            background-color: black;
-            color: white;   
-            
-        }
-        button:active{
-            opacity: 0.9;
-            box-shadow: 1px 1px 2px black;
-        }
-        
-        #signInBtn{
-            width:60%;
-            opacity: 0.9;
-            box-sizing: border-box;
-            margin:40px 20%;
-            padding: 5px 10px;
-            font-weight: bold;
-            color: white;
-            border-radius: 10px;
-            background-color: #F9714E
-        }
-        
-    </style>
+    <link rel="stylesheet" href="src/layout/layout.css">
 </head>
 <body>
     
-    <div class="joinContainer">
+    <div class="clientInfoContainer">
         <div id="joinTitle">회원 정보 변경</div>
         <label class="joinLine">
-            <span class="inputName">닉네임:</span><input type="text" name="uid" placeholder="nick name">
+            <span class="inputName">닉네임:</span><input class="inputBlock" type="text" name="uid" placeholder="nick name">
             <button type="button" >중복체크</button>
         </label>
         <label class="joinLine">
-            <span class="inputName">패스워드: </span><input type="password" name="pwd" placeholder="password">
+            <span class="inputName">패스워드: </span><input class="inputBlock" type="password" name="pwd" placeholder="password">
         </label>
         <label class="joinLine">
-            <span class="inputName">패스워드 확인: </span><input type="password" name="confirmPwd" placeholder="confirm password">
+            <span class="inputName">패스워드 확인: </span><input class="inputBlock" type="password" name="confirmPwd" placeholder="confirm password">
             <button type="button" >변경확인</button>
         </label>
         <label class="joinLine">
-            <span class="inputName">이름: </span><input type="text" name="uid" placeholder="name">
+            <span class="inputName">이름: </span><input class="inputBlock" type="text" name="uid" placeholder="name">
         </label>
         <label class="joinLine">
-            <span class="inputName">핸드폰: </span><input type="text" name="uid" placeholder="phone">
+            <span class="inputName">핸드폰: </span><input class="inputBlock" type="text" name="uid" placeholder="phone">
         </label>
         <label class="joinLine">
-            <span class="inputName">주소: </span><input type="text" name="uid" placeholder="addr존이긴한데 동적으로 처리할거임 select및 DB 활용">
+            <span class="inputName">주소: </span><input class="inputBlock" type="text" name="uid" placeholder="addr존이긴한데 동적으로 처리할거임 select및 DB 활용">
         </label>
 
         

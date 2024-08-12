@@ -4,79 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="src/layout/layout.css">
     <style>
-        body{
-            padding: 0px;
-            margin: 0px;
-            border: 1px solid black;
-        }
-        .modalPopup{
-            box-sizing: border-box;
-            position:fixed;
-            left: 30%;
-            top: 25%;
-            width: 40%;
-            height: 40%;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0px 0px 5px gray;
-        }
-        #loginTitle{
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            margin: 20px 30px;
-        }
-        input{
-            box-sizing: border-box;
-            margin: 5px 10%;
-            padding: 20px;
-            font-size: 15px;
-            width: 80%;
-            height: 40px;
-            border-radius: 10px;
-            background-color: #eee;
-        }
-        #findAccount{
-            font-weight: bold;
-            font-size: 12px;
-            margin-top:10px;
-            position: relative;
-        }
-        .find{
-            margin: 0px 2px;
-            color: skyblue;
-            float: right;
-        }
-        a:link{
-            color: skyblue;
-            text-decoration: none;
-        }
         
-        #signInBtn{
-            width:80%;
-            opacity: 0.9;
-            box-sizing: border-box;
-            margin:30px 10%;
-            padding: 5px 10px;
-            font-weight: bold;
-            color: white;
-            border-radius: 10px;
-            background-color: #F9714E
-        }
-
-        #joinZone{
-            opacity: 0.9;
-            font-weight: bold;
-            width: fit-content;
-            margin: 0px auto;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        button:active{
-            opacity: 0.9;
-            box-shadow: 1px 1px 2px black;
-        }
+        
         
     </style>
 </head>
@@ -91,7 +22,7 @@
             <span class="find"> | </span>
             <a class="find" href="javascript:;" id="findUid"> 아이디 찾기</a>
         </div>
-        <button id="signInBtn">로그인</button>
+        <button id="loginSignInBtn">로그인</button>
         <div id="joinZone">
             계정이 없으신가요? <a href="javascript:;" > 회원가입</a>
         </div>
