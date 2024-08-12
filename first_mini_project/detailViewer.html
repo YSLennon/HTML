@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #container {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+
+        }
+
+        #titleBlock {
+            box-sizing: border-box;
+            margin: 0px 50px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            height: 80px;
+
+        }
+
+        #listTitle {
+            font-weight: bold;
+
+            font-size: 35px;
+            float: left;
+        }
+
+        #boardInfo {
+            opacity: 0.9;
+            font-size: 20px;
+            float: right;
+        }
+
+        .mainBlock {
+            box-sizing: border-box;
+            margin: 00px 50px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            height: fit-content;
+            padding-bottom: 200px;
+            background-color: #eee;
+        }
+        #map{
+            width: 70%;
+            height: 400px;
+            background-color: aliceblue;
+            margin: 0px auto;
+            border-radius: 10px;
+        }
+
+        #tagZone {
+            clear: both;
+        }
+
+        .tagBlock {
+            opacity: 0.9;
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 0px 20px;
+            width: fit-content;
+            height: 30px;
+            line-height: 30px;
+            background-color: #F9714E;
+            color: white;
+            text-align: center;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        #contentsBlock{
+            clear: both;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="container">
+        <div id="titleBlock">
+            <div id="listTitle">Title</div>
+            <div id="boardInfo">
+                <div id="organizer" style="margin-left: 150px;">organizer</div>
+                <div id="cdatetime">2024.05.06 13:00 작성일자</div>
+            </div>
+
+        </div>
+        <div class="mainBlock">
+            <div id="map">
+
+            </div>
+
+            <div id="tagZone">
+                <div class="tagBlock">Ride</div>
+                <div class="tagBlock">NowMember</div>
+                <div class="tagBlock">2024.05.06 13:00 </div>
+            </div>
+
+            <div id="contentsBlock">
+                이것은 컨텐츠입니다
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>
