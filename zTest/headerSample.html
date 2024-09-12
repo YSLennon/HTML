@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 페이지 레이아웃</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        /* 공통 속성들 */
+
+        html, body {
+            margin: 0;
+            height: 200vh;
+            overflow-x: hidden; /* 수평 스크롤 숨기기 */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            overflow: auto; /* 전체 스크롤 숨기기 */
+        }
+
+        .clickableMenu:hover{
+            border: 0.2px solid gray;
+            box-shadow: 0px 0px 5px gray;
+        }
+        .clickableMenu:active{
+            background-color: #333;
+        }
+        .clickableText:hover{
+            text-shadow: 2px 2px 2px #333;
+        }
+        .clickableText:active{
+            color: #333;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            display: flex;
+            width: 100%;
+            height: 150px; /* 헤더 높이 설정 */
+            background-color: #4CAF50; /* 헤더 배경색 */
+            color: white;
+            align-items: center;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .header-logo {
+            flex: 15;
+            height: 120px;
+            background-color: #FFC107; /* 로고 배경색 */
+        }
+
+        .header-menu {
+            flex: 55;
+            height: 120px;
+            background-color: #2196F3; /* 메뉴 배경색 */
+            display: flex;
+            justify-content: center;
+        }
+
+        .headerCustomerMenu {
+            font-size: 20px;
+            flex: 30;
+            height: 120px;
+            background-color: #FF5722; /* 고객 메뉴 배경색 */
+            display: flex;
+            justify-content: flex-end;
+            padding: 40px 0px;
+            box-sizing: border-box;
+        }
+        .headerCustomerSub{
+            width: 100px;
+            z-index: 1;
+        }
+        .headerLogin{
+            
+        }
+        .headerloginMainMenu:hover .headerloginSubMenu{
+            display: block;
+        }
+        .headerloginSubMenu{
+            display: none;
+            width: 120px;
+            background-color: #eee;
+            padding: 5px 0px;
+        }
+        .headerCSCetner{
+            
+        }
+        .headerCart{
+            
+        }
+        .headerAdmin{
+            
+        }
+        .headerNotification{
+            
+        }
+
+
+
+        /* MAIN CONTAINER */
+        .main-container {
+            display: flex;
+            flex: 1; /* 메인 컨테이너가 남은 공간을 차지하도록 설정 */
+            background-color: #F5F5F5; /* 메인 컨테이너 배경색 */
+            overflow: auto; /* 내용이 넘칠 경우 스크롤 가능 */
+            box-sizing: border-box;
+            padding: 0px 15vw;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 300px; /* 사이드바의 고정 너비 */
+            background-color: #9E9E9E; /* 사이드바 배경색 */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* MAIN CONTENTS */
+        .content {
+            flex: 1; /* 콘텐츠가 사이드바를 제외한 나머지 공간을 차지하도록 설정 */
+            padding: 10px;
+            background-color: #FFFFFF; /* 콘텐츠 배경색 */
+            box-sizing: border-box;
+        }
+
+
+
+        /* FOOTER */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <script>
+        
+    </script>
+
+    <header class="header">
+
+        <div class="header-logo">
+            로고
+        </div>
+
+        <nav class="header-menu">
+            메뉴
+        </nav>
+        
+        <div class="headerCustomerMenu">
+            <div class="headerloginMainMenu headerCustomerSub">
+                <div class="headerLogin clickableText">
+                    Login
+                </div>
+                
+                <div class="headerloginSubMenu clickableMenu"><a>MyInfo/Join</a></div>
+                <div class="headerloginSubMenu clickableMenu"><a>MyStudy</a></div>
+                <div class="headerloginSubMenu clickableMenu"><a>MyShop</a></div>
+                <div class="headerloginSubMenu clickableMenu"><a>Logout /</a></div>
+            </div>
+            <div class="headerCSCenter headerCustomerSub clickableText">
+                CSCenter
+            </div>
+            <div class="headerCart headerCustomerSub clickableText">
+                Cart
+            </div>
+            <div class="headerAdmin clickableText ">
+                Admin
+            </div>
+            <div class="headerNotification clickableText">
+                headerNoti
+            </div>
+            
+        </div>
+
+    </header>
+    
+</body>
+</html>
