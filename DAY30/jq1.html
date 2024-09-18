@@ -35,4 +35,36 @@
                   .css("border", "1px solid #ccc")
                   .css("color", "red");
     })
+    function appendList(data){
+		
+		var container = document.getElementById("#listContainer");
+		
+		container.innerHTML = '';
+		
+		data.forEach(item => {
+			const listItem = document.kcreateElement('div');
+			listItem.className = 'listBlock';
+			listItem.innerHTML = `
+				<a id="title" class="listTitle" href="javascript:;">Title</a>
+				<div id="datetime" class="listDatetime">2024.05.06 13:00 모임 날짜</div>
+				<div id="tagZone">
+					<div id="category" class="tagBlock">Ride</div>
+					<div id="addr" class="tagBlock">Area</div>
+					<div id="member" class="tagBlock">NowMember</div>
+					<div id="boardStatus" class="tagBlock listStatus"> 모집중</div>
+				</div>
+			`
+			
+		})
+
+		<div id="searchZone">
+			<select>
+				<option>전체</option>
+				<option>몰루</option>
+				<option>몰러</option>
+			</select> <input id="search" placeholder="검색"> <img
+				class="searchIcon" src="${pageContext.request.contextPath}/first_mini_project/src/icon/con_searh.png">
+
+		</div>
+	}
 </script>
