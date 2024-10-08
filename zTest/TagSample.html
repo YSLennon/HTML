@@ -1,97 +1,124 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <title>목록</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        details {
-            width: 500px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            padding: 8px 8px 0 8px;
-            opacity: 0.8;
-        }
-        details[open] {
-            opacity: 1;
-            padding: 8px;
-        }
-        details[open] summary {
-            background-color: azure;
-        }
-        summary {
-            font-weight: bold;
-            background-color: bisque;
-            margin: -8px -8px 0 -8px;
-            padding: 8px;
-        }
-    </style>
-</head>
-<body>
-    
-    <details>
-        <summary>Details 태그에 있는 제목부분: summary</summary>
-        <p>맞아요 여기는 열면 나오는 부분이랍니다</p>
-    </details>
-    
-    <hr>
-    
-    <dialog id="modal">
-        <p>안녕하세요 모달입니다.</p>
-        <p>용준씨가 좋아하는 모달입니다</p>
-        <p>모달샘플</p>
-        <p>입니다</p>
-        <button onclick="document.getElementById('modal').close()" >닫기</button>
-    </dialog>
-    <button onclick="document.getElementById('modal').showModal()">열기</button>
-    
-    <hr>
-    
-    <input type="date" />
-    <input type="month" />
-    <input type="time" />
-    <input type="color" />
-    <input type="file" />
-    <input type="range" max="150"/>
-    
-    <hr>
 
-    <input list="language"/>
-    <datalist id="language">
-        <option value="자바스크립트"></option>
-        <option value="자바"></option>
-        <option value="씨"></option>
-        <option value="씨플플"></option>
-        <option value="씨샵"></option>
-        <option value="파이썬"></option>
-    </datalist>
-    <div></div>
-    
-    <input type="time" list="time"/>
-    <datalist id="time">
-        <option value="12:00"></option>
-        <option value="09>00"></option>
-        <option value="15:00"></option>
-    </datalist>
+<<<<<<< kim
 
-    <hr>
-    
-    <progress max="100" value="70"></progress>
-    <progress></progress>
-
-    <hr>
-
-    <meter
-        min="0"
-        max="100"
-        low="30"
-        high="50"
-        optimum="70" 
-        value="50">
-        
-    </meter>
-    <div>meter에 optimum은 잘 모르겠음(이상적이라던데?)</div>
-
-
-</body>
-</html>
+			    // 유효성 검사를 모두 통과했을 때, Ajax 호출 진행
+			    var nparmap = {
+			        userId:self.userId,
+			        userName:self.userName,
+			        userNickName:self.userNickName,
+			        password:self.password,
+			        email:self.email,
+			        address:self.address,
+			        zonecode: self.zonecode,
+			        addressDetail:self.addressDetail,
+			        phone:self.phone,
+			        birth:self.birth,
+			        gender:self.gender
+			    };
+			    $.ajax({
+			        url:"/joinadd1.dox",
+			        dataType:"json",  
+			        type : "POST", 
+			        data : nparmap,
+			        success : function(data) { 
+			            alert('가입하시겠습니까?');
+			            if(data.result == "success") {
+			                console.log(data);
+			                self.fnGetList();
+			                alert("환영합니다.");    
+			            }
+			            else{
+			                console.error("응답 데이터가 null");
+			            };
+			        }
+			    });
+			},
+=======
+					
+				if (!self.userId) {
+				           alert("아이디를 입력해주세요.");
+				           return;
+				       }
+				       if (!self.userName) {
+				           alert("이름을 입력해주세요.");
+				           return;
+				       }
+				       if (!self.userNickName) {
+				           alert("닉네임을 입력해주세요.");
+				           return;
+				       }
+				       if (!self.password) {
+				           alert("비밀번호를 입력해주세요.");
+				           return;
+				       }
+				       if (!self.confirmPassword) {
+				           alert("비밀번호 재확인을 입력해주세요.");
+				           return;
+				       }
+				       if (self.password !== self.confirmPassword) {
+				           alert("비밀번호가 일치하지 않습니다.");
+				           return;
+				       }
+				       if (!self.email) {
+				           alert("이메일을 입력해주세요.");
+				           return;
+				       }
+					   if(!self.gender) {
+							alert("주민등록번호 뒷자리의 맨 앞자리만 입력해 주세요.");
+							return;
+					   }
+				       if (!self.address) {
+				           alert("주소를 입력해주세요.");
+				           return;
+				       }
+				       if (!self.addressDetail) {
+				           alert("상세주소를 입력해주세요.");
+				           return;
+				       }
+				       if (!self.phone) {
+				           alert("휴대전화번호를 입력해주세요.");
+				           return;
+				       }
+				       if (!self.birth) {
+				           alert("주민등록번호 앞자리를 입력해주세요.");
+				           return;
+				       }
+					   if(!self.gender) {
+							alert("주민등록번호 뒷자리의 맨 앞자리만 입력해 주세요.");
+							return;
+					   }
+					   
+					   
+					   
+				var nparmap = {
+						userId:self.userId,
+						userName:self.userName,
+						userNickName:self.userNickName,
+						password:self.password,
+						email:self.email,
+						address:self.address,
+						zonecode: self.zonecode,
+						addressDetail:self.addressDetail,
+						phone:self.phone,
+						birth:self.birth,
+						gender:self.gender
+				};
+				$.ajax({
+					url:"/joinadd1.dox",
+					dataType:"json",	
+					type : "POST", 
+					data : nparmap,
+					success : function(data) { 
+						alert('가입하시겠습니까?');
+						if(data.result == "success") {
+							console.log(data);
+							self.fnGetList();
+							alert("환영합니다.");	
+						}
+						else{
+							console.error("응답 데이터가 null");
+						};
+					}
+				});
+		   },
+>>>>>>> main

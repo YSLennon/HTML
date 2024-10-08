@@ -1,66 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>HTTP 책 리스트</title>
     <style>
-        /* http://meyerweb.com/eric/tools/css/reset/ 
-        v2.0 | 20110126
-        License: none (public domain)
-        */
-
-        html, body, div, span, applet, object, iframe,
-        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-        a, abbr, acronym, address, big, cite, code,
-        del, dfn, em, img, ins, kbd, q, s, samp,
-        small, strike, strong, sub, sup, tt, var,
-        b, u, i, center,
-        dl, dt, dd, ol, ul, li,
-        fieldset, form, label, legend,
-        table, caption, tbody, tfoot, thead, tr, th, td,
-        article, aside, canvas, details, embed, 
-        figure, figcaption, footer, header, hgroup, 
-        menu, nav, output, ruby, section, summary,
-        time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-        /* HTML5 display-role reset for older browsers */
-        article, aside, details, figcaption, figure, 
-        footer, header, hgroup, menu, nav, section {
-            display: block;
-        }
         body {
-            line-height: 1;
-        }
-        ol, ul {
-            list-style: none;
-        }
-        blockquote, q {
-            quotes: none;
-        }
-        blockquote:before, blockquote:after,
-        q:before, q:after {
-            content: '';
-            content: none;
-        }
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-        
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
+.book-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
 
+.book-cover {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.book-details {
+    flex-grow: 1;
+}
+
+.book-details h2 {
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.price {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.rating {
+    display: flex;
+    margin: 5px 0;
+}
+
+.star {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+}
+
+.discount {
+    font-size: 18px;
+    color: red;
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* 버튼과 토스트 사이 간격 */
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+}
+
+.toast {
+    display: none;
+    margin-top: 5px; /* 버튼과 토스트 사이의 간격 */
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    position: absolute;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.toast.show {
+    display: block;
+    opacity: 1;
+}
 
     </style>
 </head>
 <body>
-    
-    
+    <div class="book-container">
+        <img src="book-cover.jpg" alt="책 표지" class="book-cover">
+        <div class="book-details">
+            <h2>HTTP: The Definitive Guide</h2>
+            <p class="price">가격: 30,000원</p>
+            <div class="rating">
+                <img src="star-filled.png" alt="별점" class="star">
+                <img src="star-filled.png" alt="별점" class="star">
+                <img src="star-filled.png" alt="별점" class="star">
+                <img src="star-filled.png" alt="별점" class="star">
+                <img src="star-empty.png" alt="별점" class="star">
+            </div>
+            <p class="discount">할인율: 20%</p>
+            <button class="add-to-cart" onclick="showToast()">장바구니에 추가</button>
+            <div id="toast" class="toast">책이 장바구니에 추가되었습니다!</div>
+        </div>
+    </div>
+
+    <script>
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000); // 3초 후에 메시지 사라짐
+        }
+    </script>
 </body>
 </html>
